@@ -29,7 +29,11 @@ public class Main8 {
         private Scanner scanner;
         private List<MenuItem> items = new ArrayList<>();
 
-        {
+        public Menu(Scanner scanner) {
+            this.scanner = scanner;
+        }
+
+        public void createItems() {
             items.add(new MenuItem("add", personList -> {
                 System.out.println("Enter first name");
                 String firstName = scanner.next();
@@ -78,7 +82,7 @@ public class Main8 {
                 System.out.println("Enter file path to read");
                 String filePath = scanner.next();
                 try (FileInputStream fis = new FileInputStream(filePath);
-                ObjectInputStream ois = new ObjectInputStream(fis)) {
+                     ObjectInputStream ois = new ObjectInputStream(fis)) {
                     personList = (List<Person>) ois.readObject();
                     personList.forEach(System.out::println);
                 } catch (Exception e) {
@@ -90,10 +94,6 @@ public class Main8 {
                 personList.clear();
                 System.out.println("Data cleared");
             }));
-        }
-
-        public Menu(Scanner scanner) {
-            this.scanner = scanner;
         }
 
         public void getItem(List<Person> persons) throws Exception {
@@ -145,6 +145,7 @@ public class Main8 {
         List<Person> personList = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
         Menu menu = new Menu(scanner);
+        menu.createItems();
         try {
             menu.getItem(personList);
         } catch (Exception e) {
