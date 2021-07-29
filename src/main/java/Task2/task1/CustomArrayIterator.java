@@ -11,7 +11,7 @@ public class CustomArrayIterator<T> implements Iterator<T> {
     private int col = 0;
     private T[][] matrix;
 
-    public CustomArrayIterator(int size, T[][] matrix) {
+    public CustomArrayIterator(T[][] matrix) {
         this.size = countElems(matrix);
         this.matrix = matrix;
     }

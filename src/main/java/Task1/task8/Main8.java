@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class Main8 {
 
     private interface Exec {
-        void exec(List<Person> personList) throws Exception;
+        void exec(List<Person> persons) throws Exception;
     }
 
     private static class MenuItem {
@@ -96,7 +96,7 @@ public class Main8 {
             this.scanner = scanner;
         }
 
-        public void getItem(List<Person> personList) throws Exception {
+        public void getItem(List<Person> persons) throws Exception {
             boolean flag = true;
             while (flag) {
                 System.out.println("Menu:");
@@ -110,27 +110,27 @@ public class Main8 {
 
                 switch (scanner.next()) {
                     case "1":
-                        items.get(0).exec.exec(personList);
+                        items.get(0).exec.exec(persons);
                         break;
 
                     case "2":
-                        items.get(1).exec.exec(personList);
+                        items.get(1).exec.exec(persons);
                         break;
 
                     case "3":
-                        items.get(2).exec.exec(personList);
+                        items.get(2).exec.exec(persons);
                         break;
 
                     case "4":
-                        items.get(3).exec.exec(personList);
+                        items.get(3).exec.exec(persons);
                         break;
 
                     case "5":
-                        items.get(4).exec.exec(personList);
+                        items.get(4).exec.exec(persons);
                         break;
 
                     case "6":
-                        items.get(5).exec.exec(personList);
+                        items.get(5).exec.exec(persons);
                         break;
 
                     case "7":

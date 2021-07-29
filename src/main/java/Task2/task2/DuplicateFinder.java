@@ -1,21 +1,27 @@
 package Task2.task2;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class DuplicateFinder<T> {
-    public List<T> finder1(List<T> first, List<T> second) {
-        List<T> result = new ArrayList<>();
+
+    public boolean finder1(List<T> first, List<T> second) {
+        List<T> res = new ArrayList<>();
+        if (first.isEmpty() || second.isEmpty()) {
+            return false;
+        }
         for (T elem : first) {
             if (second.contains(elem)) {
-                result.add(elem);
+                res.add(elem);
             }
         }
-        return result;
+        return res.size() != 0;
     }
 
-    public List<T> finder2(List<T> first, List<T> second) {
+    public boolean finder2(List<T> first, List<T> second) {
         List<T> result = new ArrayList<>();
         for (T elem1 : first) {
             for (T elem2 : second) {
@@ -24,10 +30,11 @@ public class DuplicateFinder<T> {
                 }
             }
         }
-        return result;
+        return result.size() != 0;
     }
 
-    public List<T> finder3(List<T> first, List<T> second) {
-        return first.stream().filter(second::contains).collect(Collectors.toList());
+    public boolean finder3(List<T> first, List<T> second) {
+        return !first.stream().noneMatch(second::contains);
     }
+
 }
