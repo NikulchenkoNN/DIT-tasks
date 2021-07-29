@@ -1,10 +1,7 @@
 package Task2.task2;
 
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 public class DuplicateFinder<T> {
 
@@ -34,7 +31,7 @@ public class DuplicateFinder<T> {
     }
 
     public boolean finder3(List<T> first, List<T> second) {
-        return !first.stream().noneMatch(second::contains);
+        return first.stream().anyMatch(second::contains);
     }
 
 }

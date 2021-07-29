@@ -5,11 +5,11 @@ import java.util.NoSuchElementException;
 
 public class CustomArrayIterator<T> implements Iterator<T> {
 
-    private int size;
+    private final int size;
     private int position = 0;
     private int row = 0;
     private int col = 0;
-    private T[][] matrix;
+    private final T[][] matrix;
 
     public CustomArrayIterator(T[][] matrix) {
         this.size = countElems(matrix);

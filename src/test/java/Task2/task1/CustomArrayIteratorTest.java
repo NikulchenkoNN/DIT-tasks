@@ -39,9 +39,7 @@ public class CustomArrayIteratorTest {
     public void nextTestNegative() {
         Integer[][] matrix = {{1, 2, 3}, {}, {4, 5}, {6},{}};
         Iterator<Integer> iterator = new CustomArrayIterator<>(matrix);
-        int count = 1;
-        while (count < 10) {
-            count++;
+        while (true) {
             iterator.next();
         }
     }
