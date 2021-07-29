@@ -3,10 +3,7 @@ package Task1.task6;
 import Task1.model.Person;
 import Task1.util.CompareByLastName;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main6 {
     public static void main(String[] args) {
@@ -48,7 +45,7 @@ public class Main6 {
                     if (!persons.isEmpty()) {
                         List<Person> sorted = new ArrayList<>(persons);
                         sorted.sort(new CompareByLastName());
-                        HashSet<Person> personHashSet = new HashSet<>(sorted);
+                        Set<Person> personHashSet = new TreeSet<>(sorted);
                         personHashSet.forEach(System.out::println);
                     } else {
                         System.out.println("Persons list is empty");
