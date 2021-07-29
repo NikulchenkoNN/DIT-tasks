@@ -1,6 +1,6 @@
-package tasks.task1;
+package Task1.task1;
 
-import model.Person;
+import Task1.model.Person;
 
 public class Main1 {
     public static void main(String[] args) {

@@ -1,12 +1,14 @@
-package tasks.task5;
+package Task1.task6;
 
-import model.Person;
+import Task1.model.Person;
+import Task1.util.CompareByLastName;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
 
-public class Main5 {
+public class Main6 {
     public static void main(String[] args) {
         List<Person> persons = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
@@ -17,7 +19,8 @@ public class Main5 {
             System.out.println("Menu:");
             System.out.println("1.Add");
             System.out.println("2.Show");
-            System.out.println("3.Exit");
+            System.out.println("3.Show sorted unique");
+            System.out.println("4.Exit");
 
             int res = scanner.nextInt();
 
@@ -42,6 +45,17 @@ public class Main5 {
                     break;
 
                 case (3):
+                    if (!persons.isEmpty()) {
+                        List<Person> sorted = new ArrayList<>(persons);
+                        sorted.sort(new CompareByLastName());
+                        HashSet<Person> personHashSet = new HashSet<>(sorted);
+                        personHashSet.forEach(System.out::println);
+                    } else {
+                        System.out.println("Persons list is empty");
+                    }
+                    break;
+
+                case (4):
                     flag = false;
                     break;
             }

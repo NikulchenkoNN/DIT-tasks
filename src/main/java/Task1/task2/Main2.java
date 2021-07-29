@@ -1,6 +1,6 @@
-package tasks.task2;
+package Task1.task2;
 
-import model.Person;
+import Task1.model.Person;
 
 import java.util.Scanner;
 

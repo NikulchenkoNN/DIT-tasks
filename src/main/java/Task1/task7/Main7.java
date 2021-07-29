@@ -1,15 +1,18 @@
-package tasks.task8;
+package Task1.task7;
 
-import model.Person;
-import util.CompareByLastName;
+import Task1.model.Person;
+import Task1.util.CompareByLastName;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
 
-public class Main8 {
+public class Main7 {
 
     private interface Exec {
         void exec(List<Person> personList) throws Exception;
@@ -28,7 +31,6 @@ public class Main8 {
     private static class Menu {
         private Scanner scanner;
         private List<MenuItem> items = new ArrayList<>();
-
         {
             items.add(new MenuItem("add", personList -> {
                 System.out.println("Enter first name");
@@ -64,31 +66,14 @@ public class Main8 {
                 System.out.println("Enter file path to save");
                 String filePath = scanner.next();
                 File file = new File(filePath);
-                try (FileOutputStream fos = new FileOutputStream(file, true);
-                     ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+                try (FileOutputStream fos = new FileOutputStream(file, true)) {
                     for (Person p : personList) {
-                        oos.writeObject(p);
+                        fos.write(p.toString().getBytes(StandardCharsets.UTF_8));
+                        fos.write('\n');
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            }));
-
-            items.add(new MenuItem("read", personList -> {
-                System.out.println("Enter file path to read");
-                String filePath = scanner.next();
-                try (FileInputStream fis = new FileInputStream(filePath);
-                ObjectInputStream ois = new ObjectInputStream(fis)) {
-                    personList = (List<Person>) ois.readObject();
-                    personList.forEach(System.out::println);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }));
-
-            items.add(new MenuItem("clear", personList -> {
-                personList.clear();
-                System.out.println("Data cleared");
             }));
         }
 
@@ -104,9 +89,7 @@ public class Main8 {
                 System.out.println("2.Show");
                 System.out.println("3.Show sorted unique");
                 System.out.println("4.Save to file");
-                System.out.println("5.Read from file");
-                System.out.println("6.Clear data");
-                System.out.println("7.Exit");
+                System.out.println("5.Exit");
 
                 switch (scanner.next()) {
                     case "1":

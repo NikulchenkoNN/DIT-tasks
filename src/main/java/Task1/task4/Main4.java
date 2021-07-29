@@ -1,11 +1,15 @@
-package tasks.task3;
+package Task1.task4;
 
-import model.Person;
+import Task1.model.Person;
+import Task1.util.CompareByLastName;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
-public class Main3 {
+public class Main4 {
     public static void main(String[] args) {
+        List<Person> persons = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter 'exit' to break");
         while (true) {
@@ -20,8 +24,12 @@ public class Main3 {
                 break;
             }
             Person person = new Person(firstName, lastName);
-            System.out.println(person);
+            persons.add(person);
         }
         scanner.close();
+        persons.forEach(System.out::println);
+        if (!persons.isEmpty()) {
+            persons.stream().sorted(new CompareByLastName()).forEach(System.out::println);
+        }
     }
 }

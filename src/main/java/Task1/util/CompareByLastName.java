@@ -1,6 +1,6 @@
-package util;
+package Task1.util;
 
-import model.Person;
+import Task1.model.Person;
 
 import java.util.Comparator;
 
