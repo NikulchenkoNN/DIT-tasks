@@ -5,20 +5,20 @@ import org.springframework.stereotype.Service;
 import ru.nick.Task5.entity.Box;
 import ru.nick.Task5.entity.Doc;
 import ru.nick.Task5.repo.BoxRepo;
-import ru.nick.Task5.service.api.IntBox;
+import ru.nick.Task5.service.api.IntBoxService;
 
 import java.util.List;
 
 @Service
-public class BoxService implements IntBox {
-private final BoxRepo boxRepo;
+public class BoxServiceService implements IntBoxService {
+    private final BoxRepo boxRepo;
 
-    public BoxService(BoxRepo boxRepo) {
+    public BoxServiceService(BoxRepo boxRepo) {
         this.boxRepo = boxRepo;
     }
 
     @Override
-    public Box crate(Box box) {
+    public Box create(Box box) {
         return boxRepo.save(box);
     }
 
@@ -30,8 +30,10 @@ private final BoxRepo boxRepo;
     @Override
     public Box update(Box box) {
         Box boxDb = boxRepo.getById(box.getId());
-        boxDb.setName(box.getName());
-        boxDb.setBarcode(box.getBarcode());
+        if (box.getName() != null)
+            boxDb.setName(box.getName());
+        if (box.getBarcode() != null)
+            boxDb.setBarcode(box.getBarcode());
         return boxRepo.save(boxDb);
     }
 
@@ -51,7 +53,7 @@ private final BoxRepo boxRepo;
     public Doc getFromBox(Long boxId, Long docId) {
         Box box = boxRepo.getById(boxId);
         List<Doc> docs = box.getDocList();
-        for (Doc d: docs) {
+        for (Doc d : docs) {
             if (d.getId().equals(docId)) {
                 return d;
             }

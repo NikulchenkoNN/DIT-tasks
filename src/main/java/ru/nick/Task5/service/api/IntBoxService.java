@@ -5,8 +5,8 @@ import ru.nick.Task5.entity.Doc;
 
 import java.util.List;
 
-public interface IntBox {
-    Box crate(Box box);
+public interface IntBoxService {
+    Box create(Box box);
     Box getById(Long id);
     Box update(Box box);
     List<Box> getAll();

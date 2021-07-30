@@ -4,17 +4,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.nick.Task5.entity.Doc;
 import ru.nick.Task5.repo.DocRepo;
-import ru.nick.Task5.service.api.IntDoc;
+import ru.nick.Task5.service.api.IntDocService;
 
 import java.util.List;
 
 @Service
-public class DocService implements IntDoc {
+public class DocServiceService implements IntDocService {
 
     private final DocRepo docRepo;
 
     @Autowired
-    public DocService(DocRepo docRepo) {
+    public DocServiceService(DocRepo docRepo) {
         this.docRepo = docRepo;
     }
 

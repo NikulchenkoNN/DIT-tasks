@@ -4,7 +4,7 @@ import ru.nick.Task5.entity.Doc;
 
 import java.util.List;
 
-public interface IntDoc {
+public interface IntDocService {
     Doc create(Doc doc);
     Doc getById(Long id);
     Doc update(Doc doc);

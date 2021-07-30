@@ -5,17 +5,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.nick.Task5.entity.Box;
-import ru.nick.Task5.service.api.IntBox;
+import ru.nick.Task5.entity.Doc;
+import ru.nick.Task5.service.api.IntBoxService;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/boxes")
 public class BoxController {
-    private final IntBox boxService;
+    private final IntBoxService boxService;
 
     @Autowired
-    public BoxController(IntBox boxService) {
+    public BoxController(IntBoxService boxService) {
         this.boxService = boxService;
     }
 
@@ -24,25 +25,31 @@ public class BoxController {
         return ResponseEntity.ok(boxService.getAll());
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<Box> createBox(@RequestBody Box box) {
-        Box boxToSave = boxService.crate(box);
-        return ResponseEntity.ok(boxToSave);
+        return ResponseEntity.ok(boxService.create(box));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Box> getBox(@PathVariable Long id)  {
-        Box box = boxService.getById(id);
-        Box boxShow = new Box();
-        boxShow.setId(box.getId());
-        boxShow.setName(box.getName());
-        boxShow.setBarcode(box.getBarcode());
-        return ResponseEntity.ok(boxShow);
+    public ResponseEntity<Box> getBoxById(@PathVariable Long id) {
+        return ResponseEntity.ok(boxService.getById(id));
+    }
+
+    @PutMapping("/update")
+    public Box updateBox(@RequestBody Box box) {
+        return boxService.update(box);
     }
 
     @PutMapping
-    public ResponseEntity<Box> updateBox(@RequestBody Box box) {
-        Box boxUpdate = boxService.update(box);
-        return ResponseEntity.ok(boxUpdate);
+    public ResponseEntity<Box> addDoc(Long boxId, Doc doc) {
+        Box box = boxService.getById(boxId);
+        box.setDoc(doc);
+        Box boxToSave = boxService.create(box);
+        return ResponseEntity.ok(boxToSave);
+    }
+
+    @GetMapping("/get/{boxId}/{docId}")
+    public ResponseEntity<Doc> getDoc(@PathVariable Long boxId, @PathVariable Long docId) {
+        return ResponseEntity.ok(boxService.getFromBox(boxId, docId));
     }
 }
