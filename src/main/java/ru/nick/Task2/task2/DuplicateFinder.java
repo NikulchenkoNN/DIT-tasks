@@ -28,7 +28,6 @@ public class DuplicateFinder<T> {
                 if (elem1.equals(elem2)) {
                     result.add(elem1);
                 }
-
             }
         }
         return result.size() != 0;
