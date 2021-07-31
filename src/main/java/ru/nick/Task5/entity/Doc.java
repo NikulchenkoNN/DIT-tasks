@@ -10,6 +10,7 @@ import javax.persistence.*;
 @Entity
 public class Doc {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter @Getter
     private Long id;
 

@@ -25,7 +25,7 @@ public class BoxController {
         return ResponseEntity.ok(boxService.getAll());
     }
 
-    @PostMapping("/add")
+    @PostMapping("/create")
     public ResponseEntity<Box> createBox(@RequestBody Box box) {
         return ResponseEntity.ok(boxService.create(box));
     }
@@ -40,15 +40,12 @@ public class BoxController {
         return boxService.update(box);
     }
 
-    @PutMapping
-    public ResponseEntity<Box> addDoc(Long boxId, Doc doc) {
-        Box box = boxService.getById(boxId);
-        box.setDoc(doc);
-        Box boxToSave = boxService.create(box);
-        return ResponseEntity.ok(boxToSave);
+    @PostMapping("/addDoc/{boxId}/{docId}")
+    public ResponseEntity<Box> addDoc(@PathVariable Long boxId, @PathVariable Doc docId) {
+        return ResponseEntity.ok(boxService.addDoc(boxId, docId));
     }
 
-    @GetMapping("/get/{boxId}/{docId}")
+    @GetMapping("/getDoc/{boxId}/{docId}")
     public ResponseEntity<Doc> getDoc(@PathVariable Long boxId, @PathVariable Long docId) {
         return ResponseEntity.ok(boxService.getFromBox(boxId, docId));
     }

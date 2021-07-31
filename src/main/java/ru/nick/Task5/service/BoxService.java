@@ -6,20 +6,31 @@ import ru.nick.Task5.entity.Box;
 import ru.nick.Task5.entity.Doc;
 import ru.nick.Task5.repo.BoxRepo;
 import ru.nick.Task5.service.api.IntBoxService;
+import ru.nick.Task5.service.api.IntDocService;
 
 import java.util.List;
 
 @Service
-public class BoxServiceService implements IntBoxService {
+public class BoxService implements IntBoxService {
     private final BoxRepo boxRepo;
+    private final IntDocService docService;
 
-    public BoxServiceService(BoxRepo boxRepo) {
+    public BoxService(BoxRepo boxRepo, IntDocService docService) {
         this.boxRepo = boxRepo;
+        this.docService = docService;
     }
 
     @Override
     public Box create(Box box) {
-        return boxRepo.save(box);
+        if (box.getDocList() != null) {
+            Box boxDb = boxRepo.save(box);
+            box.getDocList().forEach(doc -> {
+                docService.create(doc, boxDb.getId());
+            });
+            return boxRepo.save(boxDb);
+        } else {
+            return boxRepo.save(box);
+        }
     }
 
     @Override
@@ -34,6 +45,9 @@ public class BoxServiceService implements IntBoxService {
             boxDb.setName(box.getName());
         if (box.getBarcode() != null)
             boxDb.setBarcode(box.getBarcode());
+        if (!box.getDocList().isEmpty()) {
+            box.getDocList().forEach(boxDb::setDoc);
+        }
         return boxRepo.save(boxDb);
     }
 

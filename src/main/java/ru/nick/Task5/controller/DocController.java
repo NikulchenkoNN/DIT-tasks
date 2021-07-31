@@ -23,9 +23,9 @@ public class DocController {
         return ResponseEntity.ok(docService.getAll());
     }
 
-    @PostMapping("/add")
-    public ResponseEntity<Doc> createDoc(Doc doc) {
-        return ResponseEntity.ok(docService.create(doc));
+    @PostMapping("/create/{boxId}")
+    public ResponseEntity<Doc> createDoc(@RequestBody Doc doc, @PathVariable Long boxId) {
+        return ResponseEntity.ok(docService.create(doc, boxId));
     }
 
     @GetMapping("/{id}")
@@ -33,8 +33,8 @@ public class DocController {
         return ResponseEntity.ok(docService.getById(id));
     }
 
-    @PutMapping
-    public ResponseEntity<Doc> updateDoc(Doc doc) {
+    @PutMapping("/update")
+    public ResponseEntity<Doc> updateDoc(@RequestBody Doc doc) {
         return ResponseEntity.ok(docService.update(doc));
     }
 }
