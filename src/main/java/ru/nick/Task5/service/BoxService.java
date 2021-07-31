@@ -24,9 +24,11 @@ public class BoxService implements IntBoxService {
     public Box create(Box box) {
         if (box.getDocList() != null) {
             Box boxDb = boxRepo.save(box);
-            box.getDocList().forEach(doc -> {
-                docService.create(doc, boxDb.getId());
-            });
+            Long boxId = boxDb.getId();
+            for (Doc doc : box.getDocList()) {
+                Doc d1 = docService.create(doc, boxId);
+                boxDb.setDoc(d1);
+            }
             return boxRepo.save(boxDb);
         } else {
             return boxRepo.save(box);
