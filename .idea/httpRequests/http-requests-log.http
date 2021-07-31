@@ -1,3 +1,87 @@
+POST http://localhost:8080/boxes/create
+Content-Type: application/json
+
+{
+  "name": "first",
+  "barcode": 123456
+}
+
+<> 2021-07-31T173639.200.json
+
+###
+
+GET http://localhost:8080/boxes
+
+<> 2021-07-31T173618.200.json
+
+###
+
+GET http://localhost:8080/docs
+
+<> 2021-07-31T173612.200.json
+
+###
+
+POST http://localhost:8080/docs/create/1
+Content-Type: application/json
+
+{
+  "name": "first doc",
+  "barcode": 3456789
+}
+
+<> 2021-07-31T173608.200.json
+
+###
+
+GET http://localhost:8080/docs
+
+<> 2021-07-31T173601.200.json
+
+###
+
+POST http://localhost:8080/docs/create/1
+Content-Type: application/json
+
+{
+  "name": "first doc",
+  "barcode": 3456789
+}
+
+<> 2021-07-31T173553.200.json
+
+###
+
+PUT http://localhost:8080/boxes/update
+
+<> 2021-07-31T173547.400.json
+
+###
+
+GET http://localhost:8080/boxes/getDoc/1/1
+
+<> 2021-07-31T173539.200.json
+
+###
+
+GET http://localhost:8080/boxes
+
+<> 2021-07-31T173532.200.json
+
+###
+
+POST http://localhost:8080/boxes/create
+Content-Type: application/json
+
+{
+  "name": "second",
+  "barcode": 3456789
+}
+
+<> 2021-07-31T173525.200.json
+
+###
+
 GET http://localhost:8080/boxes
 
 <> 2021-07-31T173353.200.json
@@ -443,94 +527,6 @@ Content-Type: application/json
 }
 
 <> 2021-07-31T121056.200.json
-
-###
-
-GET http://localhost:8080/boxes
-
-<> 2021-07-31T121041.200.json
-
-###
-
-POST http://localhost:8080/boxes/create
-Content-Type: application/json
-
-{
-  "name": "first",
-  "barcode": "123456",
-  "docList": [
-    {
-      "name": "pass",
-      "barcode": "456789"
-    }
-  ]
-}
-
-<> 2021-07-31T121030.500.json
-
-###
-
-POST http://localhost:8080/boxes/create
-Content-Type: application/json
-
-{
-  "name": "second",
-  "barcode": "3456789"
-}
-
-<> 2021-07-31T121027.200.json
-
-###
-
-GET http://localhost:8080/boxes
-
-<> 2021-07-31T114909.200.json
-
-###
-
-POST http://localhost:8080/docs/create/1
-Content-Type: application/json
-
-{
-  "name": "first doc",
-  "barcode": "3456789"
-}
-
-<> 2021-07-31T114859.200.json
-
-###
-
-GET http://localhost:8080/boxes/getDoc/1/1
-
-<> 2021-07-31T114854.200.json
-
-###
-
-POST http://localhost:8080/docs/create/1
-Content-Type: application/json
-
-{
-  "name": "first doc",
-  "barcode": "3456789"
-}
-
-<> 2021-07-31T114846.200.json
-
-###
-
-PUT http://localhost:8080/boxes/update
-
-<> 2021-07-31T114839.400.json
-
-###
-
-GET http://localhost:8080/boxes/getDoc/1/1
-
-###
-
-GET http://localhost:8080/boxes
-
-<> 2021-07-31T114813.200.json
 
 ###
 

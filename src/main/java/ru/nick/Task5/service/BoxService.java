@@ -1,38 +1,24 @@
 package ru.nick.Task5.service;
 
-
 import org.springframework.stereotype.Service;
 import ru.nick.Task5.entity.Box;
 import ru.nick.Task5.entity.Doc;
 import ru.nick.Task5.repo.BoxRepo;
 import ru.nick.Task5.service.api.IntBoxService;
-import ru.nick.Task5.service.api.IntDocService;
 
 import java.util.List;
 
 @Service
 public class BoxService implements IntBoxService {
     private final BoxRepo boxRepo;
-    private final IntDocService docService;
 
-    public BoxService(BoxRepo boxRepo, IntDocService docService) {
+    public BoxService(BoxRepo boxRepo) {
         this.boxRepo = boxRepo;
-        this.docService = docService;
     }
 
     @Override
     public Box create(Box box) {
-        if (box.getDocList() != null) {
-            Box boxDb = boxRepo.save(box);
-            Long boxId = boxDb.getId();
-            for (Doc doc : box.getDocList()) {
-                Doc d1 = docService.create(doc, boxId);
-                boxDb.setDoc(d1);
-            }
-            return boxRepo.save(boxDb);
-        } else {
-            return boxRepo.save(box);
-        }
+        return boxRepo.save(box);
     }
 
     @Override
@@ -66,7 +52,7 @@ public class BoxService implements IntBoxService {
     }
 
     @Override
-    public Doc getFromBox(Long boxId, Long docId) {
+    public Doc getDocFromBox(Long boxId, Long docId) {
         Box box = boxRepo.getById(boxId);
         List<Doc> docs = box.getDocList();
         for (Doc d : docs) {

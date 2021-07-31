@@ -11,5 +11,5 @@ public interface IntBoxService {
     Box update(Box box);
     List<Box> getAll();
     Box addDoc(Long boxId, Doc doc);
-    Doc getFromBox(Long boxId, Long docId);
+    Doc getDocFromBox(Long boxId, Long docId);
 }

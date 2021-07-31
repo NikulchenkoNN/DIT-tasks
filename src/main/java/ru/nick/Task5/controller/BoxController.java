@@ -47,6 +47,6 @@ public class BoxController {
 
     @GetMapping("/getDoc/{boxId}/{docId}")
     public ResponseEntity<Doc> getDoc(@PathVariable Long boxId, @PathVariable Long docId) {
-        return ResponseEntity.ok(boxService.getFromBox(boxId, docId));
+        return ResponseEntity.ok(boxService.getDocFromBox(boxId, docId));
     }
 }
