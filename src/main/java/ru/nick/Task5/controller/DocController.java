@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.nick.Task5.entity.Doc;
 import ru.nick.Task5.service.api.IntDocService;
+import ru.nick.Task5.service.exceptions.ServiceException;
 
 import java.util.List;
 
@@ -34,7 +35,7 @@ public class DocController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<Doc> updateDoc(@RequestBody Doc doc) {
+    public ResponseEntity<Doc> updateDoc(@RequestBody Doc doc) throws ServiceException {
         return ResponseEntity.ok(docService.update(doc));
     }
 }

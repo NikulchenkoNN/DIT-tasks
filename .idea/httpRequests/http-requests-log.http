@@ -1,3 +1,199 @@
+GET http://localhost:8080/docs
+
+<> 2021-08-01T143240-1.200.json
+
+###
+
+POST http://localhost:8080/docs/create/1
+Content-Type: application/json
+
+{
+  "name": "first doc",
+  "barcode": 3456789
+}
+
+<> 2021-08-01T143240.200.json
+
+###
+
+PUT http://localhost:8080/boxes/update
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "first doc after update",
+  "barcode": 3456789111
+}
+
+<> 2021-08-01T143239-3.200.json
+
+###
+
+GET http://localhost:8080/boxes/getDoc/1/1
+
+<> 2021-08-01T143239-2.200.json
+
+###
+
+GET http://localhost:8080/boxes
+
+<> 2021-08-01T143239-1.200.json
+
+###
+
+POST http://localhost:8080/boxes/create
+Content-Type: application/json
+
+{
+  "name": "first",
+  "barcode": 123456
+}
+
+<> 2021-08-01T143239.200.json
+
+###
+
+POST http://localhost:8080/boxes/create
+Content-Type: application/json
+
+{
+  "name": "second",
+  "barcode": 3456789
+}
+
+<> 2021-08-01T143238.200.json
+
+###
+
+GET http://localhost:8080/boxes/getDoc/1/1
+
+<> 2021-08-01T143136.200.json
+
+###
+
+GET http://localhost:8080/docs
+
+<> 2021-08-01T143104.200.json
+
+###
+
+POST http://localhost:8080/docs/create/1
+Content-Type: application/json
+
+{
+  "name": "first doc",
+  "barcode": 3456789
+}
+
+<> 2021-08-01T143059.200.json
+
+###
+
+GET http://localhost:8080/boxes
+
+<> 2021-08-01T143055.200.json
+
+###
+
+POST http://localhost:8080/boxes/create
+Content-Type: application/json
+
+{
+  "name": "first",
+  "barcode": 123456
+}
+
+<> 2021-08-01T143051.200.json
+
+###
+
+GET http://localhost:8080/boxes
+
+<> 2021-08-01T143047.200.json
+
+###
+
+PUT http://localhost:8080/boxes/update
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "first doc after update",
+  "barcode": 3456789111
+}
+
+<> 2021-08-01T143040.200.json
+
+###
+
+PUT http://localhost:8080/boxes/update
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "first doc after update",
+  "barcode": 3456789111
+}
+
+<> 2021-08-01T143031.400.json
+
+###
+
+POST http://localhost:8080/boxes/create
+Content-Type: application/json
+
+{
+  "name": "first",
+  "barcode": 123456
+}
+
+<> 2021-08-01T143026.200.json
+
+###
+
+GET http://localhost:8080/boxes
+
+<> 2021-07-31T180026.200.json
+
+###
+
+PUT http://localhost:8080/boxes/update
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "first doc after update",
+  "barcode": 3456789111
+}
+
+<> 2021-07-31T180018.400.json
+
+###
+
+POST http://localhost:8080/boxes/create
+Content-Type: application/json
+
+{
+  "name": "first",
+  "barcode": 123456
+}
+
+<> 2021-07-31T180011.200.json
+
+###
+
+POST http://localhost:8080/docs/create/1
+Content-Type: application/json
+
+{
+  "name": "first doc",
+  "barcode": 3456789
+}
+
+<> 2021-07-31T180002.500.json
+
+###
+
 POST http://localhost:8080/boxes/create
 Content-Type: application/json
 
@@ -331,202 +527,6 @@ Content-Type: application/json
 }
 
 <> 2021-07-31T145026.200.json
-
-###
-
-GET http://localhost:8080/boxes
-
-<> 2021-07-31T144854.200.json
-
-###
-
-GET http://localhost:8080/boxes
-
-<> 2021-07-31T144820.200.json
-
-###
-
-POST http://localhost:8080/boxes/create
-Content-Type: application/json
-
-{
-  "name": "second",
-  "barcode": "3456789"
-}
-
-<> 2021-07-31T144815.200.json
-
-###
-
-GET http://localhost:8080/boxes
-
-<> 2021-07-31T144808.200.json
-
-###
-
-POST http://localhost:8080/boxes/create
-Content-Type: application/json
-
-{
-  "name": "first",
-  "barcode": "123456",
-  "docList": [
-    {
-      "name": "pass",
-      "barcode": "456789"
-    }
-  ]
-}
-
-<> 2021-07-31T144802.500.json
-
-###
-
-GET http://localhost:8080/boxes
-
-<> 2021-07-31T144340.200.json
-
-###
-
-POST http://localhost:8080/boxes/create
-Content-Type: application/json
-
-{
-  "name": "first",
-  "barcode": "123456",
-  "docList": [
-    {
-      "name": "pass",
-      "barcode": "456789"
-    }
-  ]
-}
-
-<> 2021-07-31T144336.500.json
-
-###
-
-GET http://localhost:8080/boxes
-
-<> 2021-07-31T144219.200.json
-
-###
-
-POST http://localhost:8080/docs/create/1
-Content-Type: application/json
-
-{
-  "name": "first doc",
-  "barcode": "3456789"
-}
-
-<> 2021-07-31T144211.200.json
-
-###
-
-GET http://localhost:8080/boxes/getDoc/1/1
-
-###
-
-GET http://localhost:8080/boxes
-
-<> 2021-07-31T144158.200.json
-
-###
-
-POST http://localhost:8080/boxes/create
-Content-Type: application/json
-
-{
-  "name": "second",
-  "barcode": "3456789"
-}
-
-<> 2021-07-31T144154.200.json
-
-###
-
-GET http://localhost:8080/boxes
-
-<> 2021-07-31T144121.200.json
-
-###
-
-POST http://localhost:8080/boxes/create
-Content-Type: application/json
-
-{
-  "name": "first",
-  "barcode": "123456",
-  "docList": [
-    {
-      "name": "pass",
-      "barcode": "456789"
-    }
-  ]
-}
-
-<> 2021-07-31T144116.500.json
-
-###
-
-GET http://localhost:8080/boxes
-
-<> 2021-07-31T121211.200.json
-
-###
-
-POST http://localhost:8080/boxes/create
-Content-Type: application/json
-
-{
-  "name": "first",
-  "barcode": "123456",
-  "docList": [
-    {
-      "name": "pass",
-      "barcode": "456789"
-    }
-  ]
-}
-
-<> 2021-07-31T121203.500.json
-
-###
-
-GET http://localhost:8080/boxes
-
-<> 2021-07-31T121124.200.json
-
-###
-
-POST http://localhost:8080/docs/create/1
-Content-Type: application/json
-
-{
-  "name": "first doc",
-  "barcode": "3456789"
-}
-
-<> 2021-07-31T121118.200.json
-
-###
-
-GET http://localhost:8080/boxes
-
-<> 2021-07-31T121101.200.json
-
-###
-
-POST http://localhost:8080/docs/create/1
-Content-Type: application/json
-
-{
-  "name": "first doc",
-  "barcode": "3456789"
-}
-
-<> 2021-07-31T121056.200.json
 
 ###
 

@@ -1,0 +1,45 @@
+POST http://localhost:8080/boxes/create
+Content-Type: application/json
+
+{
+  "name": "second",
+  "barcode": 3456789
+}
+###
+POST http://localhost:8080/boxes/create
+Content-Type: application/json
+
+{
+  "name": "first",
+  "barcode": 123456
+}
+
+###
+GET http://localhost:8080/boxes
+
+###
+GET http://localhost:8080/boxes/getDoc/1/1
+
+<> 2021-08-01T143136.200.json
+
+###
+PUT http://localhost:8080/boxes/update
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "first doc after update",
+  "barcode": 3456789111
+}
+
+###
+POST http://localhost:8080/docs/create/1
+Content-Type: application/json
+
+{
+  "name": "first doc",
+  "barcode": 3456789
+}
+
+###
+GET http://localhost:8080/docs

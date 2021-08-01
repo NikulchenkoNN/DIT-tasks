@@ -7,8 +7,10 @@ import ru.nick.Task5.entity.Doc;
 import ru.nick.Task5.repo.BoxRepo;
 import ru.nick.Task5.repo.DocRepo;
 import ru.nick.Task5.service.api.IntDocService;
+import ru.nick.Task5.service.exceptions.ServiceException;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DocService implements IntDocService {
@@ -32,14 +34,22 @@ public class DocService implements IntDocService {
 
     @Override
     public Doc getById(Long id) {
-        return docRepo.getById(id);
+        return docRepo.findById(id).get();
     }
 
     @Override
-    public Doc update(Doc doc) {
-        Doc docDb = docRepo.getById(doc.getId());
-        docDb.setName(doc.getName());
-        docDb.setBarcode(doc.getBarcode());
+    public Doc update(Doc doc) throws ServiceException {
+        Optional<Doc> optionalDoc = docRepo.findById(doc.getId());
+        if (!optionalDoc.isPresent()) {
+            throw new ServiceException("Entity not found");
+        }
+        Doc docDb = optionalDoc.get();
+        if (doc.getName() != null) {
+            docDb.setName(doc.getName());
+        }
+        if (doc.getBarcode() != null) {
+            docDb.setBarcode(doc.getBarcode());
+        }
         return docRepo.save(docDb);
     }
 

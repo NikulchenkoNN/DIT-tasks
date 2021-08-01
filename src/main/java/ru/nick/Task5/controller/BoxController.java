@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.nick.Task5.entity.Box;
 import ru.nick.Task5.entity.Doc;
 import ru.nick.Task5.service.api.IntBoxService;
+import ru.nick.Task5.service.exceptions.ServiceException;
 
 import java.util.List;
 
@@ -36,7 +37,7 @@ public class BoxController {
     }
 
     @PutMapping("/update")
-    public Box updateBox(@RequestBody Box box) {
+    public Box updateBox(@RequestBody Box box) throws ServiceException {
         return boxService.update(box);
     }
 
