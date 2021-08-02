@@ -2,6 +2,7 @@ package ru.nick.Task5.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.nick.Task5.entity.Box;
 import ru.nick.Task5.entity.Doc;
 import ru.nick.Task5.repo.BoxRepo;
@@ -38,6 +39,7 @@ public class DocService implements IntDocService {
     }
 
     @Override
+    @Transactional
     public Doc update(Doc doc) throws ServiceException {
         Optional<Doc> optionalDoc = docRepo.findById(doc.getId());
         if (!optionalDoc.isPresent()) {
