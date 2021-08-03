@@ -38,4 +38,9 @@ public class DocController {
     public ResponseEntity<Doc> updateDoc(@RequestBody Doc doc) throws ServiceException {
         return ResponseEntity.ok(docService.update(doc));
     }
+
+    @ExceptionHandler(ServiceException.class)
+    public ResponseEntity<String> exceptionsHandler(ServiceException e) {
+        return ResponseEntity.ok(e.getMessage());
+    }
 }

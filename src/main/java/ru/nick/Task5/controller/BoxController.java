@@ -52,7 +52,7 @@ public class BoxController {
     }
 
     @ExceptionHandler(ServiceException.class)
-    public ResponseEntity<Box> exceptionsHandler(ServiceException e) {
-        return null;
+    public ResponseEntity<String> exceptionsHandler(ServiceException e) {
+        return ResponseEntity.ok(e.getMessage());
     }
 }
