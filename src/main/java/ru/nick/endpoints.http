@@ -20,8 +20,6 @@ GET http://localhost:8080/boxes
 ###
 GET http://localhost:8080/boxes/getDoc/1/1
 
-<> 2021-08-01T143136.200.json
-
 ###
 PUT http://localhost:8080/boxes/update
 Content-Type: application/json

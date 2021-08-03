@@ -50,4 +50,9 @@ public class BoxController {
     public ResponseEntity<Doc> getDoc(@PathVariable Long boxId, @PathVariable Long docId) {
         return ResponseEntity.ok(boxService.getDocFromBox(boxId, docId));
     }
+
+    @ExceptionHandler(ServiceException.class)
+    public ResponseEntity<Box> exceptionsHandler(ServiceException e) {
+        return null;
+    }
 }

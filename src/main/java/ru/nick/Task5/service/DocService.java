@@ -1,8 +1,10 @@
 package ru.nick.Task5.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import ru.nick.Task5.entity.Box;
 import ru.nick.Task5.entity.Doc;
 import ru.nick.Task5.repo.BoxRepo;
@@ -58,5 +60,10 @@ public class DocService implements IntDocService {
     @Override
     public List<Doc> getAll() {
         return docRepo.findAll();
+    }
+
+    @ExceptionHandler(ServiceException.class)
+    public ResponseEntity<Doc> exceptionsHandler(ServiceException e) {
+        return null;
     }
 }
